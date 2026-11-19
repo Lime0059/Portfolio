@@ -115,7 +115,7 @@
 
 <script>
 /* ===== Configuración: cuántas burbujas por sección (se rellenan con "Próximamente" si faltan) ===== */
-const CANTIDAD = { branding: 6, gamedev: 7, otros: 5 };
+const CANTIDAD = { branding: 6, gamedev: 8, otros: 5 };
 
 const ICONOS = {
   wa:'<svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.6A9 9 0 1 1 8 19.6L3 21z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></svg>',
@@ -149,14 +149,14 @@ function caraProyecto(p, n) {
   if (p.imagen) {
     return esVideo(p.imagen)
       ? `<video src="${p.imagen}" autoplay muted loop playsinline preload="metadata"></video>${cap}`
-      : `<img src="${p.imagen}" alt="${p.titulo}" loading="lazy">${cap}`;
+      : `<img${p.logo ? ' class="logo"' : ''} src="${p.imagen}" alt="${p.titulo}" loading="lazy">${cap}`;
   }
   return `<span class="ph">${String(n).padStart(2, '0')}</span>${cap}`;
 }
 
 async function cargar() {
   let datos = {};
-  try { datos = await (await fetch('proyectos.json', { cache: 'no-cache' })).json(); } catch (e) { /* sin JSON: solo placeholders */ }
+  try { datos = await (await fetch('proyectos.json', { cache: 'no-cache' })).json(); } catch (e) { console.warn('No se pudo cargar proyectos.json: debe estar junto a index.html y la página debe abrirse con Live Server o GitHub Pages (no con doble clic).'); }
   document.querySelectorAll('.stage[data-cat]').forEach(stage => {
     const cat = stage.dataset.cat, lista = datos[cat] || [];
     const total = Math.max(CANTIDAD[cat], lista.length);

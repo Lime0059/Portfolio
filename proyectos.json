@@ -1,0 +1,42 @@
+{
+  "branding": [
+    {
+      "titulo": "Angelitos Peludos",
+      "imagen": "assets/branding/01-Main.png",
+      "logo": true,
+      "pagina": "proyectos/branding/01.html"
+    },
+    {
+      "titulo": "Drip4Less",
+      "imagen": "assets/branding/02-Main.png",
+      "logo": true,
+      "pagina": "proyectos/branding/02.html"
+    },
+    {
+      "titulo": "La Choza",
+      "imagen": "assets/branding/03-Main.png",
+      "logo": true,
+      "pagina": "proyectos/branding/03.html"
+    },
+    {
+      "titulo": "Cosmo Sound",
+      "imagen": "assets/branding/04-MainLogo.png",
+      "logo": true,
+      "pagina": "proyectos/branding/04.html"
+    },
+    {
+      "titulo": "Fragancias Alejandro",
+      "imagen": "assets/branding/05-2.png",
+      "logo": true,
+      "pagina": "proyectos/branding/05.html"
+    },
+    {
+      "titulo": "Team Uribe",
+      "imagen": "assets/branding/06-Main.png",
+      "logo": true,
+      "pagina": "proyectos/branding/06.html"
+    }
+  ],
+  "gamedev": [],
+  "otros": []
+}
