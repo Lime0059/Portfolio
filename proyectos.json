@@ -35,6 +35,12 @@
       "imagen": "assets/branding/06-Main.png",
       "logo": true,
       "pagina": "proyectos/branding/06.html"
+    },
+    {
+      "titulo": "Bel (App)",
+      "imagen": "assets/branding/Bel.png",
+      "logo": true,
+      "pagina": "proyectos/branding/07.html"
     }
   ],
   "gamedev": [
