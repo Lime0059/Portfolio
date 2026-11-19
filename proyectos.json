@@ -37,6 +37,47 @@
       "pagina": "proyectos/branding/06.html"
     }
   ],
-  "gamedev": [],
+  "gamedev": [
+    {
+      "titulo": "Ahorra Tommi",
+      "imagen": "assets/gamedev/01AhorraTommi/TommiPREVIEW.mp4",
+      "pagina": "proyectos/gamedev/01.html"
+    },
+    {
+      "titulo": "Avenida Barrido",
+      "imagen": "assets/gamedev/02AvBarrido/AvBarridoPREV.mp4",
+      "pagina": "proyectos/gamedev/02.html"
+    },
+    {
+      "titulo": "Gatito Motorizado",
+      "imagen": "assets/gamedev/03GatitoMotorizado/GatitoMotorizadoPREV.mp4",
+      "pagina": "proyectos/gamedev/03.html"
+    },
+    {
+      "titulo": "How To Disappear",
+      "imagen": "assets/gamedev/04HowToDissapear/HTDPreview.mp4",
+      "pagina": "proyectos/gamedev/04.html"
+    },
+    {
+      "titulo": "Mictlan",
+      "imagen": "assets/gamedev/05Mictlan/MictlanPREVIEW.mp4",
+      "pagina": "proyectos/gamedev/05.html"
+    },
+    {
+      "titulo": "OXXO RA",
+      "imagen": "assets/gamedev/06OxxoVuforia/01.png",
+      "pagina": "proyectos/gamedev/06.html"
+    },
+    {
+      "titulo": "Vaccinator",
+      "imagen": "assets/gamedev/07Vaccinator/VaccinatorPREVIEW.mp4",
+      "pagina": "proyectos/gamedev/07.html"
+    },
+    {
+      "titulo": "Z1",
+      "imagen": "assets/gamedev/08Z1/z1Preview.mp4",
+      "pagina": "proyectos/gamedev/08.html"
+    }
+  ],
   "otros": []
 }

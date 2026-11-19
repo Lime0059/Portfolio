@@ -148,10 +148,24 @@ function caraProyecto(p, n) {
   const cap = `<span class="cap">${p.titulo}</span>`;
   if (p.imagen) {
     return esVideo(p.imagen)
-      ? `<video src="${p.imagen}" autoplay muted loop playsinline preload="metadata"></video>${cap}`
+      ? `<video src="${p.imagen}#t=0.1" muted loop playsinline preload="metadata"></video>${cap}`
       : `<img${p.logo ? ' class="logo"' : ''} src="${p.imagen}" alt="${p.titulo}" loading="lazy">${cap}`;
   }
   return `<span class="ph">${String(n).padStart(2, '0')}</span>${cap}`;
+}
+
+/* Previews en video: se reproducen solo con el mouse encima (o con el teclado en foco).
+   En pantallas táctiles, que no tienen hover, solo mientras el cuadro está a la vista. */
+const conHover = matchMedia('(hover:hover)').matches;
+function activarVideo(face) {
+  const v = $('video', face); if (!v) return;
+  const play = () => v.play().catch(() => {}), stop = () => v.pause();
+  if (conHover) {
+    face.addEventListener('mouseenter', play); face.addEventListener('mouseleave', stop);
+    face.addEventListener('focus', play);      face.addEventListener('blur', stop);
+  } else {
+    new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play() : stop()), { threshold: .6 }).observe(face);
+  }
 }
 
 async function cargar() {
@@ -164,6 +178,7 @@ async function cargar() {
       const p = lista[i] || { titulo: 'Próximamente', pagina: null };
       const b = burbuja(i, caraProyecto(p, i + 1), 'button', `aria-label="${p.titulo}"`);
       $('.face', b).addEventListener('click', () => abrir(p));
+      activarVideo($('.face', b));
       stage.appendChild(b);
     }
   });
