@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cosmo Sound</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Oswald:wght@500;700&display=swap">
+<link rel="stylesheet" href="../proyecto.css">
+</head>
+<body class="p04">
+<header class="head">
+  <div><h1>Cosmo Sound</h1><p class="tag">Vinilos y discos · El Paso</p></div>
+  <p class="desc">Cosmo Sound es un negocio emergente de El Paso dedicado a la venta de vinilos y discos y a la renta de records. Me pidieron desarrollar su identidad visual, un manual de usos para el logo, mockups para visualizar la marca en producto y una página web sencilla.</p>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="on" data-v="galeria" role="tab">Galería</button>
+  <button data-v="pdf" role="tab">PDF</button>
+</div>
+
+<main class="split" data-v="galeria">
+  <section class="pane" id="pdf" aria-label="Documento PDF">
+    <div class="pbar"><span>PDF</span><a href="../../assets/branding/04-1.pdf" target="_blank" rel="noopener">Abrir en pestaña nueva ↗</a></div>
+    <object data="../../assets/branding/04-1.pdf#navpanes=0&amp;view=FitH" type="application/pdf">
+      <p>Tu navegador no puede mostrar el PDF aquí. <a href="../../assets/branding/04-1.pdf" target="_blank" rel="noopener">Ábrelo en una pestaña nueva</a>.</p>
+    </object>
+  </section>
+  <section class="pane" id="galeria" aria-label="Galería">
+    <div class="gal">
+      <figure><img src="../../assets/branding/04-3.png" alt="Mockup de caja de Cosmo Sound" loading="lazy"></figure>
+      <figure><img src="../../assets/branding/04-4.png" alt="Mockup de CD de Cosmo Sound" loading="lazy"></figure>
+      <figure><img src="../../assets/branding/04-5.png" alt="Mockup de vinilo de Cosmo Sound" loading="lazy"></figure>
+      <figure><img src="../../assets/branding/04-7.png" alt="Mockup de playeras de Cosmo Sound" loading="lazy"></figure>
+      <figure><img src="../../assets/branding/04-2.png" alt="Diseño de la página web de Cosmo Sound" loading="lazy"></figure>
+    </div>
+  </section>
+</main>
+
+<div id="lb" hidden><img alt=""></div>
+<script>
+  const lb = document.getElementById('lb'), li = lb.querySelector('img');
+  document.querySelectorAll('.gal img').forEach(i => i.addEventListener('click', () => { li.src = i.src; li.alt = i.alt; lb.hidden = false; }));
+  lb.addEventListener('click', () => lb.hidden = true);
+  const sp = document.querySelector('.split'), bs = document.querySelectorAll('.tabs button');
+  bs.forEach(b => b.addEventListener('click', () => { sp.dataset.v = b.dataset.v; bs.forEach(x => x.classList.toggle('on', x === b)); }));
+</script>
+</body>
+</html>
