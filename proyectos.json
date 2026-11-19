@@ -85,5 +85,30 @@
       "pagina": "proyectos/gamedev/08.html"
     }
   ],
-  "otros": []
+  "otros": [
+    {
+      "titulo": "Dibujo",
+      "etiqueta": "Dibujo",
+      "imagen": "assets/otros/1.png",
+      "pagina": "proyectos/otros/01.html"
+    },
+    {
+      "titulo": "Modelado 3D",
+      "etiqueta": "Modelado 3D",
+      "imagen": "assets/otros/2.png",
+      "pagina": "proyectos/otros/02.html"
+    },
+    {
+      "titulo": "Blender y Maya",
+      "etiqueta": "Blender y Maya",
+      "imagen": "assets/otros/3.png",
+      "pagina": "proyectos/otros/03.html"
+    },
+    {
+      "titulo": "Animación 2D",
+      "etiqueta": "Animación 2D",
+      "imagen": "assets/otros/4.png",
+      "pagina": "proyectos/otros/04.html"
+    }
+  ]
 }
