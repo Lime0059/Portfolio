@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OXXO RA · Game Dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Oswald:wght@500;700&display=swap">
+<link rel="stylesheet" href="gamedev.css">
+</head>
+<body>
+<main class="gd-page">
+  <section class="gd-gallery" aria-label="Galería de OXXO RA">
+    <div class="gd-viewer" id="viewer" aria-live="polite"></div>
+    <div class="gd-gallery-controls">
+      <span class="gd-count" id="counter">01 / 01</span>
+      <div class="gd-arrows">
+        <button class="gd-arrow" id="prev" type="button" aria-label="Anterior">←</button>
+        <button class="gd-arrow" id="next" type="button" aria-label="Siguiente">→</button>
+      </div>
+    </div>
+    <div class="gd-thumbs" id="thumbs" aria-label="Seleccionar imagen"></div>
+  </section>
+  <section class="gd-info">
+    <div>
+      <p class="gd-kicker">Experiencia aumentada · 06</p>
+      
+      <h1 class="gd-title">OXXO RA</h1>
+    </div>
+    <div class="gd-rule"></div>
+    <div class="gd-meta"><span class="gd-meta-label">Género</span><span class="gd-genre">Realidad aumentada</span></div>
+    <div class="gd-tags"><span class="gd-tag">Realidad Aumentada</span><span class="gd-tag">Android</span></div>
+    <p class="gd-description">Una experiencia de realidad aumentada para dispositivos Android, desarrollada con Vuforia. Al descargar la aplicación, el usuario puede apuntar la cámara de su celular hacia la ilustración objetivo y descubrir una recreación tridimensional de una tienda OXXO integrada en el espacio real.</p>
+    
+    <div class="gd-target-note"><strong>Cómo probarlo</strong>Descarga la aplicación y escanea la imagen objetivo para activar la experiencia de realidad aumentada.</div>
+    <div class="gd-actions"><a class="gd-action" href="assets/gamedev/06OxxoVuforia/OXXO RealidadAumentada.apk" download>↓ &nbsp;Descargar</a></div>
+    <div class="gd-footer">Portfolio · Edgar Esteban Alba &nbsp; / &nbsp; Game development</div>
+  </section>
+</main>
+<script>
+const media = [{"type": "image", "src": "assets/gamedev/06OxxoVuforia/01.png", "label": "01.png"}];
+const viewer = document.getElementById('viewer');
+const thumbs = document.getElementById('thumbs');
+const counter = document.getElementById('counter');
+let current = 0;
+function render() {
+  const item = media[current];
+  viewer.replaceChildren();
+  viewer.classList.toggle('is-image', item.type === 'image');
+  if (item.type === 'video') {
+    const frame = document.createElement('iframe');
+    frame.src = item.src + '?rel=0&modestbranding=1';
+    frame.title = 'Tráiler de OXXO RA';
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen = true;
+    viewer.appendChild(frame);
+  } else {
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = 'OXXO RA - ' + item.label;
+    viewer.appendChild(img);
+  }
+  counter.textContent = String(current+1).padStart(2,'0') + ' / ' + String(media.length).padStart(2,'0');
+  [...thumbs.children].forEach((b,i) => b.setAttribute('aria-current', i===current ? 'true':'false'));
+}
+media.forEach((item,i) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'gd-thumb' + (item.type==='video'?' video-thumb':'');
+  b.setAttribute('aria-label', item.type==='video'?'Ver tráiler':'Ver imagen '+item.label);
+  if(item.type==='image') {
+    const img=document.createElement('img'); img.src=item.src; img.alt=''; b.appendChild(img);
+  } else {
+    b.innerHTML='<span aria-hidden="true"></span>';
+  }
+  b.addEventListener('click',()=>{current=i;render();});
+  thumbs.appendChild(b);
+});
+function move(delta) { current=(current+delta+media.length)%media.length; render(); }
+document.getElementById('prev').addEventListener('click',()=>move(-1));
+document.getElementById('next').addEventListener('click',()=>move(1));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);});
+render();
+</script>
+</body>
+</html>
